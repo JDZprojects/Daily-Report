@@ -1,4 +1,4 @@
-function Sort(reference, sort, sortBy, sortReference){
+function Sort(sort, reference, sortBy, sortReference){
     // 1. Pre-calculate indices in a Map for O(1) lookup
     const lookup = new Map(reference.map((row,i) => [row[sortReference], i]));
     
@@ -11,4 +11,5 @@ function Sort(reference, sort, sortBy, sortReference){
     });
     console.log(sort);
     return sort;
+
 }
