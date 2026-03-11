@@ -91,11 +91,14 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 						let red = 100-(Math.floor(rowData[header])/(rowData['TARGET']))*100;
 						console.log("persentase merah:",red);
 						td.style.background = '#ffe045';
+						// `linear-gradient(to left, #ffe045, #ff0000 ${red}%`;
 						// gradien kuning ke merah
 					}}
 			}else if(header === 'AREA'){
 				td.style.minWidth = '50px';
 				console.log(header);
+			}else if(header === 'WORKZONE'){
+				td.style.textAlign = 'center';
 			}
 			row.appendChild(td);
 		});
@@ -105,7 +108,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 
 	// Menambahkan baris terakhir untuk grand total
 	const totalRow = document.createElement('div');
-	totalRow.className = 'row';
+	totalRow.className = 'row header';
 	
 	const numCell = document.createElement('div');
 	numCell.className = 'cell';
@@ -167,4 +170,3 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
     .catch(err => console.error('could not load CSV', err));
 </script>
 */
-
