@@ -11,7 +11,7 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
         let data = CSVstring_to_Array(csvContent);
 
         // mapping branch
-        const branch = filterByColumn(data, 'STO', null, 'exclude');
+        const branch = filterByColumn(data, 'STO DATABASE', null, 'exclude');
         data.forEach(row => {
             const workzone = (row['WORKZONE']||'').toString();
             branch.forEach(index => {
@@ -65,7 +65,11 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
                 const TTR = (row['TTR CUSTOMER']||'').toString();
                 row['DURASI']= Math.round(timeToDecimal(TTR) * 100) / 100;
             });
-            let table = Sort(rows, branch, 'AREA', 'STO');
+            console.log(rows);
+            
+            //data, reference, sortby, referenceby
+            let table = Sort(rows, branch, 'WORKZONE', 'STO');
+
             // filter untuk menampilkan defult table 
             table = SeverityFilter(table,
                 ["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR"]
