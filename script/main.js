@@ -92,11 +92,14 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
             
             //data, reference, sortby, referenceby
             let table = Sort(rows, branch, 'WORKZONE', 'STO');
-
+            console.log('test',table);
+            
             // filter untuk menampilkan defult table 
             table = SeverityFilter(table,
                 ["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","LOW"]
             );
+            table = Sort(table,["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","LOW"], 'SEVERITY');
+            console.log('test2',table);
             // render tabel untuk ditampilkan pada web
         renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT','AREA', 'BRANCH', 'WORKZONE','TARGET','DURASI', 'SUMMARY','TOTAL TIKET']); 
         console.log(table); // Parsed CSV as an array of objects
