@@ -99,6 +99,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			else if(header === 'SUMMARY'){
 				td.style.wordBreak = 'break-all';
 				td.style.maxWidth = '300px';
+				td.style.minWidth = '200px';
 			}
 			row.appendChild(td);
 		});
