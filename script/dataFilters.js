@@ -62,7 +62,6 @@ function SeverityFilter(csvData, SeverityType = []) {
 	if(row.SEVERITY === 'LOW'){ isLongDuration = Number(row.DURASI) > 20;}
 	else if(row.SEVERITY === 'MINOR'){ isLongDuration = Number(row.DURASI) > 12;}
 	else{ isLongDuration = Number(row.DURASI) > 0;}
-	console.log('check severity', row.SEVERITY, 'duration', row.DURASI, 'isMatchingSeverity', isMatchingSeverity, 'isLongDuration', isLongDuration);
 
     // Only return true if BOTH conditions are met
     return isMatchingSeverity && isLongDuration;
