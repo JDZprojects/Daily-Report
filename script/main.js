@@ -60,7 +60,8 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
             else if(timeStr.includes('/')){ [hours, minutes, seconds] = timeStr.split('/').map(Number);}
             else if(timeStr.includes('-')){ [hours, minutes, seconds] = timeStr.split('-').map(Number);}
             else{ console.warn("WADAW, pemisah waktunya harus antara :|.|/|- "); return;} 
-            return hours + (minutes/60) + (seconds/3600);}
+            return hours + (minutes/60) + (seconds/3600);
+        }
         // menentukan "DURASI" berdasarkan "TTR CUSTOMER"
         rowss.forEach(row=>{
             const TTR = (row['TTR CUSTOMER']||'').toString();
@@ -102,8 +103,8 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
         document.getElementById('PremiumPrevValue').innerText = prevCount;
         document.getElementById('CriticalValue').innerText = CritCount;
         document.getElementById('MajorValue').innerText = MajCount;
-        // document.getElementById('MinorValue').innerText = MinCount;
-        // document.getElementById('LowValue').innerText = LowCount;
+        document.getElementById('MinorValue').innerText = MinCount;
+        document.getElementById('LowValue').innerText = LowCount;
             
         console.log("Hasil Hitung:", { preCount, CritCount, MajCount });
     };
@@ -114,5 +115,5 @@ function ClickBox(clickedBox){
     console.log("Click masuk dr ", clickedBox);
     let table = filterByColumn(rows, 'SEVERITY',clickedBox,'exact'); //filter data berdasarkan severity yang dipilih
     if (table === null)console.warn("there is no data"); // jika data yang di filter tidak/kosong
-    renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT', 'BRANCH', 'WORKZONE','TARGET','DURASI','SUMMARY','TOTAL TIKET']); 
+    renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT', 'BRANCH', 'WORKZONE','TARGET','DURASI','SUMMARY','TOTAL TIKET']);
 }
