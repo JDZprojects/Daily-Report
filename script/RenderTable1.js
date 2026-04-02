@@ -104,7 +104,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			else if(header === 'SUMMARY'){
 				td.style.wordBreak = 'break-all';
 				td.style.maxWidth = '200px';
-				console.log('updated summary cell')
+				console.log('updated summary cell');
 			}
 			row.appendChild(td);
 		});
