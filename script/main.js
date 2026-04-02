@@ -96,9 +96,9 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
             
             // filter untuk menampilkan defult table 
             table = SeverityFilter(table,
-                ["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","LOW"]
+                ["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","MINOR","LOW"]
             );
-            table = Sort(table,["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","LOW"], 'SEVERITY');
+            table = Sort(table,["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","MINOR","LOW"], 'SEVERITY');
             console.log('test2',table);
             // render tabel untuk ditampilkan pada web
         renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT','AREA', 'BRANCH', 'WORKZONE','TARGET','DURASI', 'SUMMARY','TOTAL TIKET']); 
