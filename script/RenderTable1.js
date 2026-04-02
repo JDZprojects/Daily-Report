@@ -102,7 +102,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 				td.style.textAlign = 'center';
 			}
 			else if(header === 'SUMMARY'){
-				td.style.wordWrap = 'break-word';
+				td.style.wordBrake = 'break-all';
 				td.style.maxWidth = '200px';
 			}
 			row.appendChild(td);
