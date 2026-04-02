@@ -99,6 +99,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			else if(header === 'SUMMARY'){
 				td.style.wordBreak = 'break-all';
 				td.style.maxWidth = '10px';
+				console.log('masuk gasih')
 			}
 			row.appendChild(td);
 		});
