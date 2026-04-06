@@ -8,7 +8,7 @@ function CSVstring_to_Array(data) {
 			if (inQuotes && line[i + 1] === '"') { i++; } 
 			else { inQuotes = !inQuotes; }
 		} else if (!inQuotes && (ch === ',' || ch === ';')) {
-			delimiter = ch;
+			var delimiter = ch;
 			break;
 		}
 	}
@@ -131,4 +131,3 @@ init();
     .catch(err => console.error('could not load CSV', err));
 </script>
 */
-
