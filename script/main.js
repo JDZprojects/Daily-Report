@@ -11,7 +11,9 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
         const csvContent = e.target.result;
         let data = CSVstring_to_Array(csvContent);
         // data = filterByColumnByColumn(data, 'STO DATABASE', null, 'exclude');
-
+        
+        // perhitungan isi tanggal dan waktu
+        renderDateTime();
         // mapping branch
         let branch = filterByColumn(data, 'STO DATABASE', null, 'exclude');
         data.forEach(row => {
@@ -115,5 +117,5 @@ function ClickBox(clickedBox){
     console.log("Click masuk dr ", clickedBox);
     let table = filterByColumn(rows, 'SEVERITY',clickedBox,'exact'); //filter data berdasarkan severity yang dipilih
     if (table === null)console.warn("there is no data"); // jika data yang di filter tidak/kosong
-    renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT', 'BRANCH', 'WORKZONE','TARGET','DURASI','SUMMARY','TOTAL TIKET']);
+    renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT', 'BRANCH', 'WORKZONE','TARGET','DURASI','SUMMARY','TOTAL TIKET']); 
 }
