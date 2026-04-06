@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="style/StyleMain.css">
 		<link rel="stylesheet" href="style/StyleFloatBox.css">
 		<link rel="stylesheet" href="style/barCell.css">
+		<script src="script/utility.js"></script>
 		<script>
 			// Tamplate Nama bulan
 			function getMonthName() {
@@ -33,17 +34,9 @@
 			<!-- Report Title -->
 			<h1>REPORT TIKET OPEN_TSEL_METRO</h1>
 			<!-- Report Periode -->
-			<h1>Periode<script>
-				// perhitungan isi tanggal dan waktu
-				const today = new Date();
-				const year = today.getFullYear();
-				const month = getMonthName();
-				const day = String(today.getDate()).padStart(2, '0');
-				let hour = today.getHours();
-				if(hour<10) hour = `0${hour}`;
-				let minute = today.getMinutes();
-				if(minute<10) minute = `0${minute}`;
-				document.write(` ${day} ${month} ${year} | Waktu Report ${hour}:${minute} WIB`);
+			<h1 id="periode">Periode
+				<script>
+					renderDateTime();
 				</script>
 			</h1>
 		</warpper>
@@ -103,10 +96,8 @@
 	</div>
 	</body>
 	<!-- inisialisasi untuk menyambungkan logika2 yang dipakai -->
-	<script src="script/dataProses.js"></script>
-	<script src="script/dataFilters.js"></script>
-	<script src="script/RenderTable1.js"></script>
-	<script src="script/Sort.js"></script>
-	<script src="script/barCell.js"></script>
+	 <script src="script/dataFilters.js"></script>
+	 <script src="script/dataProses.js"></script>
+	 <script src="script/RenderTable1.js"></script>
 	<script src="script/main.js"></script>
 </html>
