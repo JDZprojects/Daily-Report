@@ -85,24 +85,26 @@ console.log(CSVstring_to_Array(inputString1));
 /*
 * TARIK DATA DARI INPUTAN FILE
 */ 
-function loadCSVData(filePath, delimiter = ',') {
-	// make sure parser exists before calling
-	if (typeof CSVstring_to_Array !== 'function') {
-		return Promise.reject(new Error('CSVstring_to_Array function not found. Ensure dataProses.js is loaded first.'));
-	}
+// function loadCSVData(filePath, delimiter = ',') {
+// 	// make sure parser exists before calling
+// 	if (typeof CSVstring_to_Array !== 'function') {
+// 		return Promise.reject(new Error('CSVstring_to_Array function not found. Ensure dataProses.js is loaded first.'));
+// 	}
 
-	// fetch the file and convert text to array of objects
-	return fetch(filePath)
-		.then(response => {
-			if (!response.ok) throw new Error(`Failed to fetch ${filePath}: ${response.status}`);
-			return response.text();
-		})
-		.then(text => CSVstring_to_Array(text, delimiter))
-		.catch(error => {
-			console.error('Error loading CSV:', error);
-			throw error;
-		});
-}
+// 	// fetch the file and convert text to array of objects
+// 	return fetch(filePath)
+// 		.then(response => {
+// 			//validasi respon dari fetch untuk memastikan file berhasil diambil
+// 			if (!response.ok) throw new Error(`Failed to fetch ${filePath}: ${response.status}`);
+// 			return response.text();
+// 		})
+// 		.then(text => CSVstring_to_Array(text, delimiter))
+// 		.catch(error => {
+// 			//menangkap error yang mungkin terjadi selama proses fetch atau parsing
+// 			console.error('Error loading CSV:', error);
+// 			throw error;
+// 		});
+// }
 
 /********************************************************************************/
 /* For JS modules, export the function
