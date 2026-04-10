@@ -1,10 +1,10 @@
 /**
  * Filter CSV data by column and character/value
- * @param {Array} csvData - Array of row objects
- * @param {String} columnTitle - The column/field name to filter by
- * @param {String} searchChar - The character or string to search for
- * @param {String} mode - Filter mode: 'exact' (exact match), 'include' (contains), 'exclude' (does not contain)
- * @returns {Array} Filtered data
+ * csvData(array): Array of row objects
+ * columnTitle(string): The column/field name to filter by
+ * searchChar(string): The character or string to search for
+ * mode(string): Filter mode: 'exact' (exact match), 'include' (contains), 'exclude' (does not contain)
+ * =>returns(array): Filtered data
  */
 function filterByColumn(csvData, columnTitle, searchChar, mode = 'include') {
 	return csvData.filter(row => {
@@ -24,9 +24,9 @@ function filterByColumn(csvData, columnTitle, searchChar, mode = 'include') {
 
 /**
  * Filter multiple conditions (AND logic)
- * @param {Array} csvData - Array of row objects
- * @param {Array} conditions - Array of {column, char, mode} objects ('exact', 'include', 'exclude')
- * @returns {Array} Filtered data
+ * csvData(array): Array of row objects
+ * conditions(array): Array of {column, char, mode} objects ('exact', 'include', 'exclude')
+ * =>returns(array): Filtered data
  */
 function filterByMultipleColumns(csvData, conditions) {
 	return csvData.filter(row => {
@@ -48,6 +48,15 @@ function filterByMultipleColumns(csvData, conditions) {
 	});
 }
 
+/*
+ * Filter by severity and duration
+ * - For LOW severity, duration must be > 20
+ * - For MINOR severity, duration must be > 12
+ * - For other severities, duration must be > 0
+ * csvData(array): Array of row objects
+ * SeverityType(array): Array of severity levels to include (e.g., ['LOW', 'MINOR'])
+ * =>returns(array): Filtered data
+*/
 
 function SeverityFilter(csvData, SeverityType = []) {
   // If no filters are provided, return the full dataset
@@ -67,6 +76,15 @@ function SeverityFilter(csvData, SeverityType = []) {
     return isMatchingSeverity && isLongDuration;
   });
 }
+
+/*
+ * Sort data based on a reference array
+ * - sorting(array): the array to be sorted
+ * - reference(array): the array that defines the desired order
+ * - sortBy(string): the field in the sorting array to compare against the reference
+ * - sortReference(string): (optional) if provided, use this field from the reference for comparison instead of the whole row
+ * =>returns(array): Sorted array
+*/ 
 
 // 1. Pre-calculate indices in a Map for O(1) lookup
 function Sort(sorting, reference, sortBy, sortReference = null){
