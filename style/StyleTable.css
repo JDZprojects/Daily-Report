@@ -33,11 +33,6 @@
   border: 2px solid black;
 }
 
-/* .cell {
-  padding: 6px 12px;
-  display: table-cell;
-} */
-
 .cell {
   display: table-cell;
   vertical-align: middle; /* This is the "table-cell" version of align-items */

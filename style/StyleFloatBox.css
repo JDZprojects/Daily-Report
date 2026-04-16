@@ -28,10 +28,7 @@ body {
 	border-top-style: outset;
 	border-right-style: outset;
 	border: color(from color srgb r g b);
-	/* padding: 1rem; */
 	display: flex;
-	/* flex-direction: column; */
-	/* justify-content: end; */
 	&:hover {
 		translate: 0 -0.2rem;
 	}
