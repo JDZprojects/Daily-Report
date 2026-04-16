@@ -85,14 +85,15 @@ function SeverityFilter(csvData, SeverityType = []) {
  * - sortReference(string): (optional) if provided, use this field from the reference for comparison instead of the whole row
  * =>returns(array): Sorted array
 */ 
-
 // 1. Pre-calculate indices in a Map for O(1) lookup
 function Sort(sorting, reference, sortBy, sortReference = null){
-    let lookup;
+    let lookup; // array yang akan menyimpan data jadi
     if (sortReference === null) {
+		// menentukan urutan berdasarkan alfabet
         lookup = new Map(reference.map((row,i) => [row, i]));
         console.log('lookup', lookup);
     }else{
+		// menentukan ututan berdasarkan list referensi
         lookup = new Map(reference.map((row,i) => [row[sortReference], i]));
         console.log('lookup', lookup);
     }

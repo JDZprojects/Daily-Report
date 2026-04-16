@@ -192,43 +192,41 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 </script>
 */
 
-function bars(val, target, dest) {
-    const form = document.getElementById(dest);
+// fungsi untuk membuat bar dalam durasi
+function bars(val, target, destinatio) {
+    const form = document.getElementById(destinatio);
     if (!form) {
-        console.error(`Container with id ${dest} not found`);
+        console.error(`Container with id ${destinatio} not found`);
         return;
     }
     form.innerHTML = '';
-    var percent = (val/target)*100
-
-    const container = document.createElement('div');
-    container.className = 'progressBarContainer';
-
+	// perhitungan berapa persen durasi telah berjalan
+    var percent = (val/target)*100;
+	// membuat kapsul didalam sell
     const bar = document.createElement('div');
     bar.className = 'progressBar';
-
+	// mengisi kapsul dengan text durasi
     const value = document.createElement('span');
     value.className = 'progressValue';
-    var jam = Math.floor(val);
-    var menit = Math.floor((((val*100)%100)*60)/100);
+    let jam = Math.floor(val);
+    let menit = Math.floor((((val*100)%100)*60)/100);
     console.log('data:'+val); 
     console.log('hitung:'+jam+'.'+menit);
-    if (menit < 10) menit = '0'+menit;
-    if (jam < 10) jam = '0'+jam;
+	jam = jam.toString().padStart(2,'0');
+	menit = menit.toString().padStart(2,'0');
     value.textContent = jam +':'+menit;
-
-    if(val>target){
-        bar.style.background = '#f51212';
-        value.style.color = 'white';
-    }else{
+    if(val<target){
+	// kapsul jika durasi didalam target
         const fillBar = document.createElement('div');
         fillBar.className = 'fill';
         fillBar.style.width = percent + '%';
         bar.appendChild(fillBar);
-    }
-    
+    }else{
+	// kapsul jika durasi melewati target
+		bar.style.background = '#f51212';
+        value.style.color = 'white';
+    };
     // Put the value inside the fill bar
     bar.appendChild(value);
-    container.appendChild(bar);
-    form.appendChild(container);
+    form.appendChild(bar);
 }

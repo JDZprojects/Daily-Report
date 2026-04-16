@@ -38,8 +38,7 @@ function CSVstring_to_Array(data) {
 		result.push(current);
 		// console.log("proses data"+current);
 		return result;
-	}
-	
+	};
 	/* This variable will collect all the titles
 	from the data variable 
 	   ["Name", "Roll Number"] */
@@ -72,7 +71,6 @@ function CSVstring_to_Array(data) {
 				obj[title] = values[index];
 				return obj;
 			}, {});
-
 		return storeKeyValue;
 	});
 	return ansArray;
