@@ -46,15 +46,17 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
             summary.includes('MINOR')?'MINOR':
             summary.includes('LOW')?'LOW':'none';
             
+            // penentuan target dari setiap severity, jika tidak ada kata kunci yang sesuai maka target defaultnya adalah 24
             row['TARGET'] = 
-            summary.includes('PREMIUM')? summary.includes('PREVENTIVE')?24:2:
-            summary.includes('CRITICAL')?4:
-            summary.includes('MAJOR')?8:
-            summary.includes('MINOR')?16:24;
+            summary.includes('PREMIUM')? summary.includes('PREVENTIVE')?24:2://jika premium preventive maka targetnya 24, jika hanya premium maka targetnya 2
+            summary.includes('CRITICAL')?4: //jika critical maka targetnya 4
+            summary.includes('MAJOR')?8://jika major maka targetnya 8
+            summary.includes('MINOR')?16:24;//jika minor maka targetnya 16 dan defult targetnya 24
 
             // https://medium.com/@hxu0407/9-smart-ways-to-replace-if-else-in-javascript-28f82ad6dcb9
         });
         //Perhitungan untuk kolom durasi
+        //fungsi untuk mengubah format waktu menjadi desimal
         function timeToDecimal(timeStr){
             let hours,minutes,seconds;
             if(timeStr.includes(':')){  [hours, minutes, seconds] = timeStr.split(':').map(Number);}
@@ -97,7 +99,9 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
                 case 'CRITICAL': CritCount++; break;//CRITICAL
                 case 'MAJOR': MajCount++; break;//MAJOR
             }if(severity === 'MINOR'&&Number(index['DURASI']) > 12)MinCount++; //MINOR
+            // jika severity adalah MINOR maka durasi harus lebih dari 12 untuk dihitung
             else if(severity === 'LOW'&&Number(index['DURASI']) > 20)LowCount++; //LOW
+            // jika severity adalah LOW maka durasi harus lebih dari 20 untuk dihitung
             console.log(MajCount);
         }
         //menampilkan data yang sudah di olah
@@ -115,7 +119,8 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
 //Fungsi klik pada floating box yang berfungsi untuk filter berdasarkan SEVERITY yang dipilih
 function ClickBox(clickedBox){
     console.log("Click masuk dr ", clickedBox);
-    let table = filterByColumn(rows, 'SEVERITY',clickedBox,'exact'); //filter data berdasarkan severity yang dipilih
+    let table = filterByColumn(rows, 'SEVERITY',clickedBox,'exact'); 
+    //filter data berdasarkan severity yang dipilih
     if (table === null)console.warn("there is no data"); // jika data yang di filter tidak/kosong
     renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT', 'BRANCH', 'WORKZONE','TARGET','DURASI','SUMMARY','TOTAL TIKET']); 
 }
