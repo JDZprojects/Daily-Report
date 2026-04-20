@@ -120,7 +120,7 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
 //Fungsi klik pada floating box yang berfungsi untuk filter berdasarkan SEVERITY yang dipilih
 function ClickBox(clickedBox){
     console.log("Click masuk dr ", clickedBox);
-    let table = filterByColumn(rows, 'SEVERITY',clickedBox,'exact'); 
+    let table = SeverityFilter(rowss, clickedBox);
     //filter data berdasarkan severity yang dipilih
     if (table === null)console.warn("there is no data"); // jika data yang di filter tidak/kosong
     renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT', 'BRANCH', 'WORKZONE','TARGET','DURASI','SUMMARY','TOTAL TIKET']); 

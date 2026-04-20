@@ -10,7 +10,7 @@
 }
 
 .progressBar {
-    /* padding-top: 2px; */
+    padding-top: 2px;
     height: 38px;
     background-color: var(--light-gray);
     border-radius: var(--radius);
