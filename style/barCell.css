@@ -8,7 +8,6 @@
     --radius: 10px;
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
-
 .progressBar {
     /* padding-top: 2px; */
     height: 38px;
@@ -20,7 +19,6 @@
     align-items: center;        /* vertical center */
     justify-content: center;    /* horizontal center */
 }
-
 .fill {
     height: 100%;
     border-radius: var(--radius);
@@ -31,7 +29,6 @@
     top: 0;
     left: 0;
 }
-
 .progressValue {
     font-weight: 700;
     color: black;               /* strong contrast */

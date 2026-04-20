@@ -1,5 +1,3 @@
-
-
 .wrapper {
   font-family: "Helvetica Neue", Helvetica, Arial;
   font-size: 10px;
@@ -9,7 +7,6 @@
   position: relative;
   width: center;
 }
-
 .table {
   margin: 0 0 40px 0;
   width: 100%;
@@ -17,7 +14,6 @@
   display: table;
   color: black;
 }
-
 .row {
   display: table-row;
   background: #f6f6f6e6;
@@ -32,7 +28,6 @@
   background: rgb(125, 203, 252);
   border: 2px solid black;
 }
-
 .cell {
   display: table-cell;
   vertical-align: middle; /* This is the "table-cell" version of align-items */
