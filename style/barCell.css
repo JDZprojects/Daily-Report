@@ -1,40 +1,50 @@
 :root {
-    --primary: #ff5151;
-    --primary-dark: #B35917;
-    --accent: #ff6d6d;
-    --light-gray: #f8f88b;
-    --card-bg: rgba(255, 255, 255, 0.97);
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --radius: 10px;
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --primary: #ff5151;
+  --primary-dark: #B35917;
+  --accent: #ff6d6d;
+  --light-gray: #f8f88b;
+  --card-bg: rgba(255, 255, 255, 0.97);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --radius: 10px;
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
+
 .progressBar {
-    /* padding-top: 2px; */
-    height: 38px;
-    background-color: var(--light-gray);
-    border-radius: var(--radius);
-    overflow: hidden;
-    position: relative;
-    display: flex;              /* enable flexbox */
-    align-items: center;        /* vertical center */
-    justify-content: center;    /* horizontal center */
+  /* padding-top: 2px; */
+  height: 38px;
+  background-color: var(--light-gray);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  /* enable flexbox */
+  align-items: center;
+  /* vertical center */
+  justify-content: center;
+  /* horizontal center */
 }
+
 .fill {
-    height: 100%;
-    border-radius: var(--radius);
-    width: 0%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    transition: width 1.5s cubic-bezier(0.22, 0.68, 0, 1.71);
-    position: absolute;         /* fill sits behind text */
-    top: 0;
-    left: 0;
+  height: 100%;
+  border-radius: var(--radius);
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 1.5s cubic-bezier(0.22, 0.68, 0, 1.71);
+  position: absolute;
+  /* fill sits behind text */
+  top: 0;
+  left: 0;
 }
+
 .progressValue {
-    font-weight: 700;
-    color: black;               /* strong contrast */
-    /* position: absolute;    remove absolute positioning */
-    top:8px;
-    left:10px;
-    z-index: 1;                 /* ensures text is above fill */
-    pointer-events: none;       /* text won't block clicks */
+  font-weight: 700;
+  color: black;
+  /* strong contrast */
+  /* position: absolute;    remove absolute positioning */
+  top: 8px;
+  left: 10px;
+  z-index: 1;
+  /* ensures text is above fill */
+  pointer-events: none;
+  /* text won't block clicks */
 }

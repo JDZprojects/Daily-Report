@@ -72,21 +72,21 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			td.style.alignItems = 'center';
 			td.style.borderLeft = '1px solid #9a9a9a';
 			// jika data berisi angka maka masuk ke dalam if
-			if(header !== 'SUMMARY'){
+			if (header !== 'SUMMARY') {
 				td.style.textAlign = 'center';
 				td.style.padding = '0px 0px';
 				// jika data durasi masuk ke dalam if untuk
 				// menentukan warna pada data cell
-				if(header === 'DURASI'){
+				if (header === 'DURASI') {
 					setTimeout(() => {
-						td.textContext='';
+						td.textContext = '';
 						td.className = 'progress-section cell';
-						td.id = 'Bar'+rowData['INCIDENT']; 
-						bars(rowData[header],rowData['TARGET'],'Bar'+rowData['INCIDENT']);
+						td.id = 'Bar' + rowData['INCIDENT'];
+						bars(rowData[header], rowData['TARGET'], 'Bar' + rowData['INCIDENT']);
 					}, 100);
 				}
 			}
-			else if(header === 'SUMMARY'){
+			else if (header === 'SUMMARY') {
 				td.style.wordBreak = 'break-all';
 				td.style.maxWidth = '380px';
 				td.style.minWidth = '350px';
@@ -112,7 +112,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 		const td = document.createElement('div');
 		td.className = 'cell';
 		td.setAttribute('data-title', header);
-		if (header === 'TOTAL TIKET'){
+		if (header === 'TOTAL TIKET') {
 			// Try to sum numeric values
 			let total = 0;
 			let isNumeric = true;
@@ -134,7 +134,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			// td.style.borderRight = '1px solid #9a9a9a';
 			totalRow.appendChild(td);
 		}
-		else if(header === 'DURASI'){}
+		else if (header === 'DURASI') { }
 		else totalRow.appendChild(td);
 	});
 	table.appendChild(totalRow);
@@ -147,57 +147,57 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 /* For HTML usage
 <script>
 	const csvText = loadCSVData('Rearrange W2 Feb 2026 - Data Upload.csv', ',')
-    .then(rows => {
-      console.log('parsed rows:', rows);
-	  let parsedData = filterByColumn(rows, 'Branch', 'TARGET', 'exclude');
-	  parsedData = filterByColumn(parsedData, 'Area', 'JAWA', 'include');
-	  console.log('Filtered rows:', parsedData);
-	  // Choose columns to show (set to null or empty [] to show all columns)
-	  const columnsToShow = ['PERIODE', 'Area', 'Regional', 'Branch']; 
-	  // Render into the table container
-	  renderTableFromCSV(parsedData, 'output2', columnsToShow);
-	  console.log('Rendered rows count:', parsedData.length);
-    })
-    .catch(err => console.error('could not load CSV', err));
+		.then(rows => {
+			console.log('parsed rows:', rows);
+		let parsedData = filterByColumn(rows, 'Branch', 'TARGET', 'exclude');
+		parsedData = filterByColumn(parsedData, 'Area', 'JAWA', 'include');
+		console.log('Filtered rows:', parsedData);
+		// Choose columns to show (set to null or empty [] to show all columns)
+		const columnsToShow = ['PERIODE', 'Area', 'Regional', 'Branch']; 
+		// Render into the table container
+		renderTableFromCSV(parsedData, 'output2', columnsToShow);
+		console.log('Rendered rows count:', parsedData.length);
+		})
+		.catch(err => console.error('could not load CSV', err));
 </script>
 */
 // fungsi untuk membuat bar dalam durasi
 function bars(val, target, destinatio) {
-    const form = document.getElementById(destinatio);
-    if (!form) {
-        console.error(`Container with id ${destinatio} not found`);
-        return;
-    }
-    form.innerHTML = '';
+	const form = document.getElementById(destinatio);
+	if (!form) {
+		console.error(`Container with id ${destinatio} not found`);
+		return;
+	}
+	form.innerHTML = '';
 	// perhitungan berapa persen durasi telah berjalan
-    var percent = (val/target)*100;
+	var percent = (val / target) * 100;
 	// membuat kapsul didalam sell
-    const bar = document.createElement('div');
-    bar.className = 'progressBar';
+	const bar = document.createElement('div');
+	bar.className = 'progressBar';
 	// mengisi kapsul dengan text durasi
-    const value = document.createElement('span');
-    value.className = 'progressValue';
-    let jam = Math.floor(val);
+	const value = document.createElement('span');
+	value.className = 'progressValue';
+	let jam = Math.floor(val);
 	// val=data durasi dalam desimal sehingga perlu diubah menjadi 
 	// jam dan menit untuk ditampilkan pada kapsul
-    let menit = Math.floor((((val*100)%100)*60)/100);
-    console.log('data:'+val); 
-    console.log('hitung:'+jam+'.'+menit);
-	jam = jam.toString().padStart(2,'0'); //menambah nol di depan jika jam kurang dari 10
-	menit = menit.toString().padStart(2,'0'); //menambah nol di depan jika menit kurang dari 10
-    value.textContent = jam +':'+ menit;
-    if(val<target){
-	// kapsul jika durasi didalam target
-        const fillBar = document.createElement('div');
-        fillBar.className = 'fill';
-        fillBar.style.width = percent + '%';
-        bar.appendChild(fillBar);
-    }else{
-	// kapsul jika durasi melewati target
+	let menit = Math.floor((((val * 100) % 100) * 60) / 100);
+	console.log('data:' + val);
+	console.log('hitung:' + jam + '.' + menit);
+	jam = jam.toString().padStart(2, '0'); //menambah nol di depan jika jam kurang dari 10
+	menit = menit.toString().padStart(2, '0'); //menambah nol di depan jika menit kurang dari 10
+	value.textContent = jam + ':' + menit;
+	if (val < target) {
+		// kapsul jika durasi didalam target
+		const fillBar = document.createElement('div');
+		fillBar.className = 'fill';
+		fillBar.style.width = percent + '%';
+		bar.appendChild(fillBar);
+	} else {
+		// kapsul jika durasi melewati target
 		bar.style.background = '#f51212';
-        value.style.color = 'white';
-    };
-    // Put the value inside the fill bar
-    bar.appendChild(value);
-    form.appendChild(bar);
+		value.style.color = 'white';
+	};
+	// Put the value inside the fill bar
+	bar.appendChild(value);
+	form.appendChild(bar);
 }
