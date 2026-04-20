@@ -68,13 +68,11 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
         });
         //data, reference, sortby, referenceby
         let table = Sort(rowss, branch, 'WORKZONE', 'STO');
-        console.log('test',table);
         // filter untuk menampilkan defult table 
         table = SeverityFilter(table,["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","MINOR","LOW"]);
-        table = Sort(table,["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","MINOR","LOW"], 'SEVERITY');
+        table = Sort(csvData=table, reference=["PREMIUM PREVENTIVE","PREMIUM", "CRITICAL", "MAJOR","MINOR","LOW"], sortBy='SEVERITY');
         // render tabel untuk ditampilkan pada web
-        renderTableFromCSV(table, 'tableData', ['SEVERITY', 'INCIDENT','AREA', 'BRANCH', 'WORKZONE','TARGET','DURASI', 'SUMMARY','TOTAL TIKET']); 
-        console.log(table); // Parsed CSV as an array of objects
+        renderTableFromCSV(csvData=table, tableContainerId='tableData', columns=['SEVERITY', 'INCIDENT','AREA', 'BRANCH', 'WORKZONE','TARGET','DURASI', 'SUMMARY','TOTAL TIKET']); 
         //proses untuk dalam floating Box
         let preCount = 0; //Premium
         let prevCount = 0; //Premium Preventive
@@ -93,7 +91,6 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
             // jika severity adalah MINOR maka durasi harus lebih dari 12 untuk dihitung
             else if(severity === 'LOW'&&Number(index['DURASI']) > 20)LowCount++; //LOW
             // jika severity adalah LOW maka durasi harus lebih dari 20 untuk dihitung
-            console.log(MajCount);
         }
         //menampilkan data yang sudah di olah
         document.getElementById('PremiumValue').innerText = preCount;
@@ -102,7 +99,6 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
         document.getElementById('MajorValue').innerText = MajCount;
         document.getElementById('MinorValue').innerText = MinCount;
         document.getElementById('LowValue').innerText = LowCount;
-        console.log("Hasil Hitung:", { preCount, CritCount, MajCount });
     };
     reader.readAsText(file);
 }); 

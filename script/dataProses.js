@@ -34,7 +34,6 @@ function CSVstring_to_Array(data) {
 			}
 		}
 		result.push(current);
-		// console.log("proses data"+current);
 		return result;
 	};
 	/* This variable will collect all the titles
@@ -46,7 +45,6 @@ function CSVstring_to_Array(data) {
 	   from the data
 	   [ 'Rohan,01', 'Aryan,02' ] */
 	const titleValues = data.slice(data.indexOf('\n') + 1).split(/\r?\n/).filter(v => v.trim());
-	// console.log(titleValues);
 	/* Map function will iterate over all 
 	   values of title values array and 
 	   append each object at the end of 

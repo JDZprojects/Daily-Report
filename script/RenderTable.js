@@ -90,7 +90,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 				}
 			}else if(header === 'AREA'){
 				td.style.minWidth = '50px';
-				console.log(header);
 			}else if(header === 'WORKZONE'||header === 'SEVERITY'){
 				td.style.textAlign = 'center';
 			}
@@ -98,8 +97,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 				td.style.wordBreak = 'break-all';
 				td.style.maxWidth = '380px';
 				td.style.minWidth = '350px';
-			}else{
-				console.log(header);
 			}
 			row.appendChild(td);
 		});

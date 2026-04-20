@@ -98,6 +98,5 @@ function Sort(sorting, reference, sortBy, sortReference = null){
         const indexB = lookup.has(b[sortBy]) ? lookup.get(b[sortBy]) : Infinity;
         return indexA - indexB;
     });
-    console.log(sorting);
     return sorting;
 }
