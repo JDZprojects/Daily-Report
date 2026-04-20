@@ -21,7 +21,6 @@ function filterByColumn(csvData, columnTitle, searchChar, mode = 'include') {
 		return false;
 	});
 }
-
 /**
  * Filter multiple conditions (AND logic)
  * csvData(array): Array of row objects
@@ -47,7 +46,6 @@ function filterByMultipleColumns(csvData, conditions) {
 		});
 	});
 }
-
 /*
  * Filter by severity and duration
  * - For LOW severity, duration must be > 20
@@ -57,7 +55,6 @@ function filterByMultipleColumns(csvData, conditions) {
  * SeverityType(array): Array of severity levels to include (e.g., ['LOW', 'MINOR'])
  * =>returns(array): Filtered data
 */
-
 function SeverityFilter(csvData, SeverityType = []) {
   // If no filters are provided, return the full dataset
   if (SeverityType.length === 0) return csvData;
@@ -65,18 +62,15 @@ function SeverityFilter(csvData, SeverityType = []) {
   return csvData.filter(row => {
     // Condition 1: Is the severity in our selected list?
     const isMatchingSeverity = SeverityType.includes(row.SEVERITY);
-    
     // Condition 2: Is the duration more than 5?
 	let isLongDuration;
 	if(row.SEVERITY === 'LOW'){ isLongDuration = Number(row.DURASI) > 20;}
 	else if(row.SEVERITY === 'MINOR'){ isLongDuration = Number(row.DURASI) > 12;}
 	else{ isLongDuration = Number(row.DURASI) > 0;}
-
     // Only return true if BOTH conditions are met
     return isMatchingSeverity && isLongDuration;
   });
 }
-
 /*
  * Sort data based on a reference array
  * - sorting(array): the array to be sorted

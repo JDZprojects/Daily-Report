@@ -9,10 +9,8 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 		console.error(`Container with id "${tableContainerId}" not found`);
 		return;
 	}
-	
 	// Menghapus konten yang sebelumnya
 	container.innerHTML = '';
-
 	// Memastikan data benar ada
 	if (!csvData || csvData.length === 0) {
 		console.error('No data to render');
@@ -23,22 +21,17 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 		container.appendChild(warpper);
 		return;
 	}
-
 	// Menentikan Header yang akamn ditampilkan
 	// If columns is null/undefined or empty array, show all columns; otherwise show only selected columns
 	let headers = (columns && Array.isArray(columns) && columns.length > 0) ? columns : Object.keys(csvData[0]);
-	
 	// Menghapus penomoran yang ada pada tabel
 	headers = headers.filter(h => h !== 'No.' && h.trim() !== '');
-
 	// Buatabel berdasarkan CSS yang ada (div.table / div.row / div.cell)
 	const table = document.createElement('div');
 	table.className = 'table';
-
 	// Membuat kolom nomor baru
 	const headerRow = document.createElement('div');
 	headerRow.className = 'row header';
-	
 	// Menambahkan cell untuk nomor
 	const numHeader = document.createElement('div');
 	numHeader.className = 'cell';
@@ -46,7 +39,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 	// numHeader.style.borderRight = '1px solid #9a9a9a';
 	numHeader.style.borderLeft = '1px solid #9a9a9a';
 	headerRow.appendChild(numHeader);
-
 	// Menambahkan cell untuk header
 	headers.forEach(header => {
 		const th = document.createElement('div');
@@ -57,16 +49,13 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 		th.style.borderLeft = '1px solid #9a9a9a';
 		// th.style.maxWidth = '2px';
 		headerRow.appendChild(th);
-
 	});
 	// Memasukkan semua data pada baris pertama
 	table.appendChild(headerRow);
-
 	// Membuat cell data
 	csvData.forEach((rowData, index) => {
 		const row = document.createElement('div');
 		row.className = 'row';
-		
 		// otomatis membuat cell penomoran
 		const numCell = document.createElement('div');
 		numCell.className = 'cell';
@@ -76,7 +65,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 		numCell.style.borderLeft = '1px solid #9a9a9a';
 		numCell.textContent = (index + 1).toString();
 		row.appendChild(numCell);
-
 		// otomatis membuat cell untuk data
 		headers.forEach(header => {
 			const td = document.createElement('div');
@@ -115,14 +103,11 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			}
 			row.appendChild(td);
 		});
-
 		table.appendChild(row);
 	});
-
 	// Menambahkan baris terakhir untuk grand total
 	const totalRow = document.createElement('div');
 	totalRow.className = 'row header';
-	
 	const numCell1 = document.createElement('div');
 	const numCell = document.createElement('div');
 	numCell.className = 'cell';
@@ -130,10 +115,8 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 	numCell.textContent = 'GrandTotal';
 	numCell.fontWeight = '24px';
 	numCell1.style.borderLeft = '1px solid #9a9a9a';
-
 	totalRow.appendChild(numCell1);
 	totalRow.appendChild(numCell);
-
 	// Perhitungan total tiket
 	headers.forEach(header => {
 		const td = document.createElement('div');
@@ -169,11 +152,8 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 	container.appendChild(table);
 	console.log(`Rendered ${csvData.length} rows into ${tableContainerId}`);
 }
-
-
 // Auto-render when page loads
 // Note: Copy this block into your HTML file or ensure it's executed after the DOM is ready and dataProses.js is loaded, since it relies on the CSVstring_to_Array function defined there.
-
 /* For HTML usage
 <script>
 	const csvText = loadCSVData('Rearrange W2 Feb 2026 - Data Upload.csv', ',')
@@ -191,7 +171,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
     .catch(err => console.error('could not load CSV', err));
 </script>
 */
-
 // fungsi untuk membuat bar dalam durasi
 function bars(val, target, destinatio) {
     const form = document.getElementById(destinatio);

@@ -16,10 +16,8 @@ function CSVstring_to_Array(data) {
 	function splitLine(line, delimiter) {
 		const result = [];
 		let current = '';
-		
 		for (let i = 0; i < line.length; i++) {
 			const ch = line[i];
-			
 			if (ch === '"') {
 				// toggle inQuotes unless it's an escaped quote
 				if (inQuotes && line[i+1] === '"') {
@@ -44,24 +42,20 @@ function CSVstring_to_Array(data) {
 	   ["Name", "Roll Number"] */
 	const titlesLine = data.slice(0, data.indexOf('\n'));
 	const titles = splitLine(titlesLine, delimiter);
-
 	/* This variable will store the values
 	   from the data
 	   [ 'Rohan,01', 'Aryan,02' ] */
 	const titleValues = data.slice(data.indexOf('\n') + 1).split(/\r?\n/).filter(v => v.trim());
 	// console.log(titleValues);
-
 	/* Map function will iterate over all 
 	   values of title values array and 
 	   append each object at the end of 
 	   the array */
 	const ansArray = titleValues.map(function (v) {
-
 		/* Values variable will store individual 
 		   title values         
 		   [ 'Rohan', '01' ] */
 		const values = splitLine(v, delimiter);
-
 		/* storeKeyValue variable will store 
 		   object containing each title
 		   with their respective values i.e 
@@ -75,10 +69,8 @@ function CSVstring_to_Array(data) {
 	});
 	return ansArray;
 };
-
 var inputString1 = "Name,Roll Number\nRohan,01\nAryan,02";
 console.log(CSVstring_to_Array(inputString1));
-
 /*********************************************************************/
 /*
 * TARIK DATA DARI INPUTAN FILE
