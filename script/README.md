@@ -3,21 +3,21 @@
 ## dataProses.js
 data proses ini memproses data csv menjadi 2d array sehingga dapat lebih mudah digunakan proses data ini langung berjalan ketika file laporan diupload dan memproses data menjadi array.
 
-* >define delimeter
+* define delimeter
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/script/dataProses.js#L4-L14
 code ini melihat file csv untuk menentukan delimeter yang dipakai dalam file. code ini akan memastikan delimeter yang dipakai berdasarkan delimeter pertama yang ditemukan sehingga data pertama tidak boleh memiliki titik(.), koma(,), dan titik-koma(;).
 
-* >split line
+* split line
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/script/dataProses.js#L16-L41
 code ini akan memotong data berdasarkan kolom yang ditandai oleh delimeter
 
-* >mengambil baris pertama dan membagi data perkolom
+* mengambil baris pertama dan membagi data perkolom
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/script/dataProses.js#L45-L46
 
-* >split data perbaris dan menjadi array
+* split data perbaris dan menjadi array
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/script/dataProses.js#L51
 
-* >map data value
+* map data value
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/script/dataProses.js#L54-L77
 
 ## dataFilter.js
@@ -58,4 +58,3 @@ code ini menampilkan waktu saat ini
 
 ## main.js
 menggunakan semua fungsi untuk menampilkan/menjalankan seluruh logika
-
