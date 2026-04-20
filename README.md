@@ -1,27 +1,17 @@
 # Daily-Report
 Data yang perlu ditambahkan dalam report => STO DATABASE,BRANCH DATABASE,AREA DATABASE
 
-<<<<<<< HEAD
 ## Index.html
 ### Link Requiered file
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L4-L12
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L88-L91
 
 ### Menampilkan Logo
-=======
-
-## Link Requiered file
-https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L4-L12
-
-## Menampilkan Logo
->>>>>>> 655e1a813c3eabf8821f346657a9bdfa18ec181e
 Bagian ini dapat di edit sesuai kebutuhan tampilan logo
 
 * src="[menunjuk lokasi gambar]"
 * style="[mengedit ukuran dan penempatan logo]"
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L16-L20
-<<<<<<< HEAD
-
 
 ### Title Report
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L22-L31
@@ -50,8 +40,3 @@ Bagian ini menampilkan tombol yang akan digunakan untuk memasukkan file csv untu
 * Major
 * Minor (durasinya diatas 12 jam) 
 * Low (durasinya diatas 20 jam)
-
-
-test
-=======
->>>>>>> 655e1a813c3eabf8821f346657a9bdfa18ec181e
