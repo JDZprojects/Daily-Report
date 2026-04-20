@@ -59,11 +59,12 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
         //fungsi untuk mengubah format waktu menjadi desimal
         function timeToDecimal(timeStr){
             let hours,minutes,seconds;
-            if(timeStr.includes(':')){  [hours, minutes, seconds] = timeStr.split(':').map(Number);}
-            else if(timeStr.includes('.')){ [hours, minutes, seconds] = timeStr.split('.').map(Number);}
-            else if(timeStr.includes('/')){ [hours, minutes, seconds] = timeStr.split('/').map(Number);}
-            else if(timeStr.includes('-')){ [hours, minutes, seconds] = timeStr.split('-').map(Number);}
-            else{ console.warn("WADAW, pemisah waktunya harus antara :|.|/|- "); return;} 
+            [hours,minutes,seconds] = 
+            timeStr.includes(':')? timeStr.split(':').map(Number):
+            timeStr.includes('.')? timeStr.split('.').map(Number):
+            timeStr.includes('/')? timeStr.split('/').map(Number):
+            timeStr.includes('-')? timeStr.split('-').map(Number):
+            (console.warn("WADAW, pemisah waktunya harus antara :|.|/|- "), [0,0,0]);
             return hours + (minutes/60) + (seconds/3600);
         }
         // menentukan "DURASI" berdasarkan "TTR CUSTOMER"
