@@ -36,5 +36,5 @@
     top:8px;
     left:10px;
     z-index: 1;                 /* ensures text is above fill */
-    pointer-events: none;       /* text won’t block clicks */
+    pointer-events: none;       /* text won't block clicks */
 }
