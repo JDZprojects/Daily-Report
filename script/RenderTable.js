@@ -45,9 +45,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 		th.className = 'cell';
 		th.textContent = header;
 		th.style.textAlign = 'center';
-		// th.style.borderRight = '1px solid #9a9a9a';
 		th.style.borderLeft = '1px solid #9a9a9a';
-		// th.style.maxWidth = '2px';
 		headerRow.appendChild(th);
 	});
 	// Memasukkan semua data pada baris pertama
@@ -61,7 +59,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 		numCell.className = 'cell';
 		numCell.setAttribute('data-title', 'No.');
 		numCell.style.textAlign = "center";
-		// numCell.style.borderRight = '1px solid #9a9a9a';
 		numCell.style.borderLeft = '1px solid #9a9a9a';
 		numCell.textContent = (index + 1).toString();
 		row.appendChild(numCell);
@@ -75,7 +72,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			td.style.alignItems = 'center';
 			td.style.borderLeft = '1px solid #9a9a9a';
 			// jika data berisi angka maka masuk ke dalam if
-			if(!isNaN(rowData[header])){
+			if(header !== 'SUMMARY'){
 				td.style.textAlign = 'center';
 				td.style.padding = '0px 0px';
 				// jika data durasi masuk ke dalam if untuk
@@ -88,10 +85,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 						bars(rowData[header],rowData['TARGET'],'Bar'+rowData['INCIDENT']);
 					}, 100);
 				}
-			}else if(header === 'AREA'){
-				td.style.minWidth = '50px';
-			}else if(header === 'WORKZONE'||header === 'SEVERITY'){
-				td.style.textAlign = 'center';
 			}
 			else if(header === 'SUMMARY'){
 				td.style.wordBreak = 'break-all';
@@ -185,12 +178,14 @@ function bars(val, target, destinatio) {
     const value = document.createElement('span');
     value.className = 'progressValue';
     let jam = Math.floor(val);
+	// val=data durasi dalam desimal sehingga perlu diubah menjadi 
+	// jam dan menit untuk ditampilkan pada kapsul
     let menit = Math.floor((((val*100)%100)*60)/100);
     console.log('data:'+val); 
     console.log('hitung:'+jam+'.'+menit);
-	jam = jam.toString().padStart(2,'0');
-	menit = menit.toString().padStart(2,'0');
-    value.textContent = jam +':'+menit;
+	jam = jam.toString().padStart(2,'0'); //menambah nol di depan jika jam kurang dari 10
+	menit = menit.toString().padStart(2,'0'); //menambah nol di depan jika menit kurang dari 10
+    value.textContent = jam +':'+ menit;
     if(val<target){
 	// kapsul jika durasi didalam target
         const fillBar = document.createElement('div');

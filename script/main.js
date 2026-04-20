@@ -43,7 +43,8 @@ document.getElementById('csvInput').addEventListener('change', function(event) {
             summary.includes('LOW')?'LOW':'none';
             // penentuan target dari setiap severity, jika tidak ada kata kunci yang sesuai maka target defaultnya adalah 24
             row['TARGET'] = 
-            summary.includes('PREMIUM')? summary.includes('PREVENTIVE')?24:2://jika premium preventive maka targetnya 24, jika hanya premium maka targetnya 2
+            summary.includes('PREMIUM')? summary.includes('PREVENTIVE')?24:2:
+            //jika premium preventive maka targetnya 24, jika hanya premium maka targetnya 2
             summary.includes('CRITICAL')?4: //jika critical maka targetnya 4
             summary.includes('MAJOR')?8://jika major maka targetnya 8
             summary.includes('MINOR')?16:24;//jika minor maka targetnya 16 dan defult targetnya 24
