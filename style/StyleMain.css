@@ -19,7 +19,7 @@ warpper{
     text-align: center;
     margin-bottom: 10px;
     /* background: #000; */
-}
+  } 
 .warpperBox{
     box-sizing: border-box;
     display: flex;
@@ -28,7 +28,7 @@ warpper{
     justify-content: center;/* Centers Horizontally */
     /* align-items: center; Centers vertically */
     /* background: #000; */
-}
+} 
 .Filebtn {
   position: absolute;
   background: radial-gradient(circle at 50% 0%, rgb(125, 203, 252) 0%, #3e9bff 64%);
