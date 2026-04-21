@@ -3,33 +3,31 @@ Data yang perlu ditambahkan dalam report => STO DATABASE,BRANCH DATABASE,AREA DA
 
 ## Index.html
 ### Link Requiered file
-https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L4-L12
-https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L88-L91
+https://github.com/JDZprojects/Daily-Report/blob/d1aef97a6afe2c0ba9da3e0416fad5107ade320e/index.html#L9-L13
+https://github.com/JDZprojects/Daily-Report/blob/d1aef97a6afe2c0ba9da3e0416fad5107ade320e/index.html#L89-L92
 
 ### Menampilkan Logo
 Bagian ini dapat di edit sesuai kebutuhan tampilan logo
 
 * src="[menunjuk lokasi gambar]"
 * style="[mengedit ukuran dan penempatan logo]"
-https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L16-L20
-https://github.com/JoshDavZ/Daily-Report/tree/main/style#crop-container
+https://github.com/JDZprojects/Daily-Report/blob/d1aef97a6afe2c0ba9da3e0416fad5107ade320e/index.html#L18-L22
 
 ### Title Report
-https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L22-L31
+https://github.com/JDZprojects/Daily-Report/blob/d1aef97a6afe2c0ba9da3e0416fad5107ade320e/index.html#L24-L33
 renderDateTime();
 memanggil fungsi dari script/utility.js
-https://github.com/JoshDavZ/Daily-Report/blob/655e1a813c3eabf8821f346657a9bdfa18ec181e/script/utility.js#L1-L11
+https://github.com/JDZprojects/Daily-Report/blob/d1aef97a6afe2c0ba9da3e0416fad5107ade320e/script/utility.js#L1-L20
 yang secara otomatis menampilkan tanggal dan jam saat membuka dashboard
 
 ### Severity Counter / Floating Box
-https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L33-L48
+https://github.com/JDZprojects/Daily-Report/blob/d1aef97a6afe2c0ba9da3e0416fad5107ade320e/index.html#L35-L50
 Bagian ini akan menunjukkan jumlah tiket dengan severity tertentu dan jika di click akan filter data berdasarkan severity yang dipilih
 
 box harus berada didalam wrapperBox karena ada logika css yang membuat floatingBox flex ke samping
-https://github.com/JoshDavZ/Daily-Report/tree/main/style#warpperbox
 
 ### Tabel
-https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L79-L84
+https://github.com/JDZprojects/Daily-Report/blob/d1aef97a6afe2c0ba9da3e0416fad5107ade320e/index.html#L81-L86
 
 Bagian ini menampilkan tombol yang akan digunakan untuk memasukkan file csv untuk menjadi laporan harian dan setelah dimasukkan web akan membuat tabel menampilkan semua tiket dengan severity
 * Premium Preventive 
