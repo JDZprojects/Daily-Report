@@ -17,11 +17,15 @@ document.getElementById('csvInput').addEventListener('change', function (event) 
     let branch = filterByColumn(data, 'STO DATABASE', null, 'exclude');
     data.forEach(row => {
       const workzone = (row['WORKZONE'] || '').toString();
+      // sto adalah string yang berisi data workzone pada index saat dijalankan
       branch.forEach(index => {
         let sto = (index['STO DATABASE'] || '').toString();
+        // sto adalah string yang berisi data sto database pada index saat dijalankan
         if (workzone.includes(sto)) {
+          // melihat apakah 
           row['BRANCH'] = index['BRANCH DATABASE'];
           row['AREA'] = index['AREA DATABASE'];
+          return; // stop foreach ketika sudah menemukan data yang sama
         }
       })
     })
@@ -29,25 +33,24 @@ document.getElementById('csvInput').addEventListener('change', function (event) 
     rowss = filterByColumn(data, 'SUMMARY', 'TSEL_METRO', 'include');
     if (!rowss || rowss.lenght === 0) {
       console.warn("There is no data");
-    } rowss
+    }
     // menentukan "SEVERITY","TOTAL TIKET", dan "TARGET" berdasarkan isi "SUMMARY"
     rowss.forEach(row => {
       const summary = (row['SUMMARY'] || '').toString();
       row['TOTAL TIKET'] = 1;
-      row['SEVERITY'] =
+
+      let SEVERITY, TARGET
+      [SEVERITY, TARGET] =
+      // menentukan severity 
         summary.includes('PREMIUM') ? summary.includes('PREVENTIVE') ?
-          'PREMIUM PREVENTIVE' : 'PREMIUM' :
-          summary.includes('CRITICAL') ? 'CRITICAL' :
-            summary.includes('MAJOR') ? 'MAJOR' :
-              summary.includes('MINOR') ? 'MINOR' :
-                summary.includes('LOW') ? 'LOW' : 'none';
-      // penentuan target dari setiap severity, jika tidak ada kata kunci yang sesuai maka target defaultnya adalah 24
-      row['TARGET'] =
-        summary.includes('PREMIUM') ? summary.includes('PREVENTIVE') ? 24 : 2 :
-          //jika premium preventive maka targetnya 24, jika hanya premium maka targetnya 2
-          summary.includes('CRITICAL') ? 4 : //jika critical maka targetnya 4
-            summary.includes('MAJOR') ? 8 ://jika major maka targetnya 8
-              summary.includes('MINOR') ? 16 : 24;//jika minor maka targetnya 16 dan defult targetnya 24
+        ['PREMIUM PREVENTIVE',24] : ['PREMIUM',2] :
+        //jika premium preventive maka targetnya 24, jika hanya premium maka targetnya 2
+          summary.includes('CRITICAL') ? ['CRITICAL',4] : //jika critical maka targetnya 4
+            summary.includes('MAJOR') ? ['MAJOR',8] : //jika major maka targetnya 8
+              summary.includes('MINOR') ? ['MINOR',16] : //jika minor maka targetnya 16
+                summary.includes('LOW') ? ['LOW',24] : ['none',24]; //jika low/default maka targetnya 24
+      row['SEVERITY'] = SEVERITY;
+      row['TARGET'] = TARGET;
       // https://medium.com/@hxu0407/9-smart-ways-to-replace-if-else-in-javascript-28f82ad6dcb9
     });
     //Perhitungan untuk kolom durasi
@@ -67,38 +70,41 @@ document.getElementById('csvInput').addEventListener('change', function (event) 
       const TTR = (row['TTR CUSTOMER'] || '').toString();
       row['DURASI'] = Math.round(timeToDecimal(TTR) * 100) / 100;
     });
-    //data, reference, sortby, referenceby
+    // data, reference, sortby, referenceby
     let table = Sort(rowss, branch, 'WORKZONE', 'STO');
     // filter untuk menampilkan defult table 
     table = SeverityFilter(table, ["PREMIUM PREVENTIVE", "PREMIUM", "CRITICAL", "MAJOR", "MINOR", "LOW"]);
     table = Sort(csvData = table, reference = ["PREMIUM PREVENTIVE", "PREMIUM", "CRITICAL", "MAJOR", "MINOR", "LOW"], sortBy = 'SEVERITY');
     // render tabel untuk ditampilkan pada web
     renderTableFromCSV(csvData = table, tableContainerId = 'tableData', columns = ['SEVERITY', 'INCIDENT', 'AREA', 'BRANCH', 'WORKZONE', 'TARGET', 'DURASI', 'SUMMARY', 'TOTAL TIKET']);
-    //proses untuk dalam floating Box
-    let preCount = 0; //Premium
-    let prevCount = 0; //Premium Preventive
-    let CritCount = 0; //Critical
-    let MajCount = 0; //Major
-    let MinCount = 0; //Minor
+    // proses untuk dalam floating Box
+    let premiumCount = 0; //Premium
+    let preventiveCount = 0; //Premium Preventive
+    let CriticalCount = 0; //Critical
+    let MajorCount = 0; //Major
+    let MinorCount = 0; //Minor
     let LowCount = 0; //Low
     for (let index of rowss) {
       const severity = (index['SEVERITY'] || '').toString();
       switch (severity) {
-        case 'PREMIUM': preCount++; break;//PREMIUM
-        case 'PREMIUM PREVENTIVE': prevCount++; break;//PREMIUM PREVENTIVE
-        case 'CRITICAL': CritCount++; break;//CRITICAL
-        case 'MAJOR': MajCount++; break;//MAJOR
-      }if (severity === 'MINOR' && Number(index['DURASI']) > 12) MinCount++; //MINOR
-      // jika severity adalah MINOR maka durasi harus lebih dari 12 untuk dihitung
-      else if (severity === 'LOW' && Number(index['DURASI']) > 20) LowCount++; //LOW
-      // jika severity adalah LOW maka durasi harus lebih dari 20 untuk dihitung
+        case 'PREMIUM': premiumCount++; break;//PREMIUM
+        case 'PREMIUM PREVENTIVE': preventiveCount++; break;//PREMIUM PREVENTIVE
+        case 'CRITICAL': CriticalCount++; break;//CRITICAL
+        case 'MAJOR': MajorCount++; break;//MAJOR
+        default: 
+          if (severity === 'MINOR' && Number(index['DURASI']) > 12) MinorCount++; //MINOR
+          // jika severity adalah MINOR maka durasi harus lebih dari 12 untuk dihitung
+          else if (severity === 'LOW' && Number(index['DURASI']) > 20) LowCount++; //LOW
+          // jika severity adalah LOW maka durasi harus lebih dari 20 untuk dihitung
+          break;
+      }
     }
     //menampilkan data yang sudah di olah
-    document.getElementById('PremiumValue').innerText = preCount;
-    document.getElementById('PremiumPrevValue').innerText = prevCount;
-    document.getElementById('CriticalValue').innerText = CritCount;
-    document.getElementById('MajorValue').innerText = MajCount;
-    document.getElementById('MinorValue').innerText = MinCount;
+    document.getElementById('PremiumValue').innerText = premiumCount;
+    document.getElementById('PremiumPrevValue').innerText = preventiveCount;
+    document.getElementById('CriticalValue').innerText = CriticalCount;
+    document.getElementById('MajorValue').innerText = MajorCount;
+    document.getElementById('MinorValue').innerText = MinorCount;
     document.getElementById('LowValue').innerText = LowCount;
   };
   reader.readAsText(file);
