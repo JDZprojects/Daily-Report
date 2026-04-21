@@ -57,3 +57,27 @@ code ini menampilkan waktu saat ini
 
 ## main.js
 menggunakan semua fungsi untuk menampilkan/menjalankan seluruh logika
+
+### membuat global variable supaya variabel tabel dapat digunakan diluar fungsi
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L1
+
+### begitu file csv dimasukkan logika akan berjalan
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L2-L9
+
+### file yang diload akan diproses menjadi data yang dapat dipakai
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L10-L15
+
+### menentukan brach dan area berdasarkan workzone
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L17-L27
+
+### menentukan severity dan target dari setiap tiket
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L33-L52
+
+### Merapihkan data dengan sorting dan filter data dan hanya data yang diperlukan saja yang tampil
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L70-L76
+
+### menghitung jumlah tiket setiap severity yang ditampilkan dalam floating box
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L77-L103
+
+### fungsi yang dijalankan saat click pada floating box, untuk filter hanya severity yang dipencet yang muncul
+https://github.com/JoshDavZ/Daily-Report/blob/3dac96232289311bb61462f743cd293af7dcdba9/script/main.js#L107-L113

@@ -87,6 +87,7 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 				}
 			}
 			else if (header === 'SUMMARY') {
+				// value summary akan diprint semua mengikuti lebar maksimal cell begitu text melewati lebar maksimal text akan langsung break line meskipun ditengah kata
 				td.style.wordBreak = 'break-all';
 				td.style.maxWidth = '380px';
 				td.style.minWidth = '350px';
@@ -108,7 +109,12 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 	totalRow.appendChild(numCell1);
 	totalRow.appendChild(numCell);
 	// Perhitungan total tiket
+	let skipcount = true
 	headers.forEach(header => {
+		if (skipcount){
+			skipcount = false;
+			return;
+		}
 		const td = document.createElement('div');
 		td.className = 'cell';
 		td.setAttribute('data-title', header);
@@ -134,7 +140,6 @@ function renderTableFromCSV(csvData, tableContainerId, columns = null) {
 			// td.style.borderRight = '1px solid #9a9a9a';
 			totalRow.appendChild(td);
 		}
-		else if (header === 'DURASI') { }
 		else totalRow.appendChild(td);
 	});
 	table.appendChild(totalRow);
