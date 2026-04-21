@@ -22,7 +22,7 @@ Text yang ingin di tampilkan dapat diubah pada bagian
 
 renderDateTime();
 memanggil fungsi dari script/utility.js
-https://github.com/JoshDavZ/Daily-Report/tree/main/script#utilityjs
+https://github.com/JoshDavZ/Daily-Report/blob/655e1a813c3eabf8821f346657a9bdfa18ec181e/script/utility.js#L1-L11
 yang secara otomatis menampilkan tanggal dan jam saat membuka dashboard
 
 ### Severity Counter / Floating Box
