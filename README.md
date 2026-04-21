@@ -16,10 +16,6 @@ https://github.com/JoshDavZ/Daily-Report/tree/main/style#crop-container
 
 ### Title Report
 https://github.com/JoshDavZ/Daily-Report/blob/ada9526fab3d7c631d2131815172b18dd4ff33f5/index.html#L22-L31
-
-Text yang ingin di tampilkan dapat diubah pada bagian
-<h1></h1>
-
 renderDateTime();
 memanggil fungsi dari script/utility.js
 https://github.com/JoshDavZ/Daily-Report/blob/655e1a813c3eabf8821f346657a9bdfa18ec181e/script/utility.js#L1-L11
