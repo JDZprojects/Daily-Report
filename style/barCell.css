@@ -1,18 +1,14 @@
 :root {
   --primary: #ff5151;
-  --primary-dark: #B35917;
   --accent: #ff6d6d;
-  --light-gray: #f8f88b;
-  --card-bg: rgba(255, 255, 255, 0.97);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --yellow: #f8f88b;
   --radius: 10px;
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .progressBar {
   /* padding-top: 2px; */
   height: 38px;
-  background-color: var(--light-gray);
+  background-color: var(--yellow);
   border-radius: var(--radius);
   overflow: hidden;
   position: relative;
